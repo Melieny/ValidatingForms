@@ -1,30 +1,28 @@
-export default function ehUmCPF(campo){
-    const cpf = campo.value.replace(/\.|-/g,"");
-    if(validaNumerosRepetidos(cpf) || validaPrimeiroDigito(cpf) || validaSegundoDigito(cpf)){
-        console.log("Esse CPF Nao existe")
-    } else {
-        console.log("Esse CPF existe")
+export default function ehUmCPF(campo) {
+    const cpf = campo.value.replace(/\.|-/g, "");
+    if (validaNumerosRepetidos(cpf) || validaPrimeiroDigito(cpf) || validaSegundoDigito(cpf)) {
+        campo.setCustomValidity('Esse cpf não é válido')
     }
 }
 
-
-function validaNumerosRepetidos(cpf){
+function validaNumerosRepetidos(cpf) {
     const numerosRepetidos = [
-        '00000000000000',
-        '11111111111111',
-        '22222222222222',
-        '33333333333333',
-        '44444444444444',
-        '55555555555555',
-        '66666666666666',
-        '77777777777777',
-        '88888888888888',
-        '99999999999999'
+        '00000000000',
+        '11111111111',
+        '22222222222',
+        '33333333333',
+        '44444444444',
+        '55555555555',
+        '66666666666',
+        '77777777777',
+        '88888888888',
+        '99999999999'
     ]
-     return numerosRepetidos.includes(cpf)
+
+    return numerosRepetidos.includes(cpf)
 }
 
-function validaPrimeiroDigito(cpf){
+function validaPrimeiroDigito(cpf) {
     let soma = 0;
     let multiplicador = 10;
 
@@ -42,8 +40,7 @@ function validaPrimeiroDigito(cpf){
     return soma != cpf[9];
 }
 
-
-function validaSegundoDigito(cpf){
+function validaSegundoDigito(cpf) {
     let soma = 0;
     let multiplicador = 11;
 
@@ -60,4 +57,3 @@ function validaSegundoDigito(cpf){
 
     return soma != cpf[10];
 }
-
